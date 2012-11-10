@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	 <head>
+	 	<title>audio play</title>
+	 	<script type="text/javascript" >
+	 	
+	 	
+	 	
+	 	function playAudio() {
+	 		
+	 		var audio = document.getElementById("directions");
+			
+			audio.play();
+			
+			setTimeout(closeWindow,audio.duration * 1000 + 1000);
+   		
+		}
+		function closeWindow() {
+			window.open("closer.htm", '_self');
+		}
+			
+		
+	 	</script>
+	 </head>
+<body onload="playAudio()">
+	
+
+<audio id = "directions" controls="controls">
+  <source src="horse.mp3" type="audio/mp3" >
+  <source src="audioc820cb3335c84eb14831f45d6ddeff42.ogg" type="audio/ogg">
+Your browser does not support this audio format.
+</audio>
+<button onclick="playAudio()">play</button>
+
+</body>
+</html>

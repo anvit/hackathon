@@ -1,0 +1,40 @@
+
+<!-- saved from url=(0052)http://utdallas.edu/~ravi.nankani/dsm_untouched.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <script type="text/javascript" src="./dsm_untouched_files/dsm_lib_min.js"></script>
+ <script type="text/javascript">
+      DSM.gwHost = "dsm.labs.ericsson.net";
+      DSM.gwPort = 8080;
+      DSM.apiKey = "PPqFw8pUcSmRAHM1ksomBrpj42D9l5QiYIu31uVz"; 
+    </script> 
+  </head>  
+  <body> 
+    <script> 
+      var hash = null;
+      DSM.onReady = function() {
+        // get a clone of hash://test
+        hash = memCtrl.get("hash://simpleTest"); 
+ 
+        // update the screen when the replica is cloned
+        hash.onReady = function() {
+          document.getElementById("textfield").value = hash.get("myKey"); 
+        };
+ 
+        // handle changes to the memory
+        hash.onRemoteUpdate = function(op) {                                                                                                                                                                     
+          document.getElementById("textfield").value = op.value; 
+        };
+ 
+        // enable the set button when the DSM storage replica is ready
+        document.getElementById("set_button").disabled=false;   
+      };
+ 
+      function set(value) {
+        hash.set("myKey", value);
+        hash.submit();
+      }
+    </script> 
+    <input type="text" id="textfield" value="">
+    <button disabled="true" id="set_button" onclick="set(document.getElementById(&#39;textfield&#39;).value)">Set</button>
+   
+</body></html>
